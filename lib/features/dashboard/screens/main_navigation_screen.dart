@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
+import '../../../core/constants/app_colors.dart';
 import '../../expenses/screens/expense_screen.dart';
 import '../../habits/screens/habit_screen.dart';
 import '../../profile/screens/profile_screen.dart';
@@ -36,28 +37,39 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
         index: _currentIndex,
         children: screens,
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        onTap: _onTabSelected,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home_rounded),
+      bottomNavigationBar: NavigationBar(
+        selectedIndex: _currentIndex,
+        onDestinationSelected: _onTabSelected,
+        backgroundColor: AppColors.surface,
+        indicatorColor: AppColors.primary.withValues(alpha: 0.25),
+        destinations: const [
+          NavigationDestination(
+            icon: Icon(Icons.home_outlined),
+            selectedIcon: Icon(Icons.home_rounded, color: AppColors.primaryLight),
             label: 'Tổng quan',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.checklist_rounded),
+          NavigationDestination(
+            icon: Icon(Icons.checklist_outlined),
+            selectedIcon:
+                Icon(Icons.checklist_rounded, color: AppColors.primaryLight),
             label: 'Thói quen',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.account_balance_wallet_rounded),
+          NavigationDestination(
+            icon: Icon(Icons.account_balance_wallet_outlined),
+            selectedIcon: Icon(Icons.account_balance_wallet_rounded,
+                color: AppColors.primaryLight),
             label: 'Thu chi',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.bar_chart_rounded),
+          NavigationDestination(
+            icon: Icon(Icons.bar_chart_outlined),
+            selectedIcon:
+                Icon(Icons.bar_chart_rounded, color: AppColors.primaryLight),
             label: 'Thống kê',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person_rounded),
+          NavigationDestination(
+            icon: Icon(Icons.person_outline_rounded),
+            selectedIcon:
+                Icon(Icons.person_rounded, color: AppColors.primaryLight),
             label: 'Nhóm 11',
           ),
         ],
